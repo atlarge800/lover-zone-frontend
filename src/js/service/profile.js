@@ -1,8 +1,8 @@
 import { API } from '@/config'
-import request from './request'
+import call from './call'
 
 export async function getProfileConfig() {
-    return request.get(API.PROFILE_GET_CONFIG).then(data => {
+    return call(API.PROFILE, 'getConfig').then(data => {
         return data.result
     })
 }
