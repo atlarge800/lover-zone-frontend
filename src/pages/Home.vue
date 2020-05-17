@@ -24,7 +24,8 @@
 import moment from "moment";
 import "@/fonts/iconfont.css";
 import "@/css/heart.css";
-import '@/js/utils/snow'
+import "@/js/utils/snow";
+import { getProfileConfig } from "@/js/service/profile";
 
 export default {
   name: "Home",
@@ -47,6 +48,21 @@ export default {
     title: function() {
       return "相爱的第" + this.days + "天";
     }
+  },
+  mounted() {
+    getProfileConfig().then(data => {
+      this.boy = data.profile.boy;
+      this.girl = data.profile.girl;
+      this.time = data.profile.time;
+      console.log(this.boy, " Love ", this.girl);
+      console.log(
+        "页面访问量为",
+        data.pv,
+        "次，有",
+        data.uv,
+        "人见证了我们的爱情"
+      );
+    });
   }
 };
 </script>
