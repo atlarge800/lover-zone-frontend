@@ -21,9 +21,9 @@ window.addEventListener('load', function () {
     var W = container.clientWidth || container.innerWidth;
     var H = container.clientHeight || container.innerHeight;
     canvas.width = W;
-    canvas.height = W;
+    canvas.height = H;
 
-    this.window.addEventListener('resize', function() {
+    window.addEventListener('resize', function() {
         W = container.clientWidth || container.innerWidth;
         H = container.clientHeight || container.innerHeight;
         canvas.width = W;
