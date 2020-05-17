@@ -20,8 +20,16 @@ window.addEventListener('load', function () {
     var ctx = canvas.getContext("2d");
     var W = container.clientWidth || container.innerWidth;
     var H = container.clientHeight || container.innerHeight;
-    canvas.width = container.clientWidth;
-    canvas.height = container.clientHeight;
+    canvas.width = W;
+    canvas.height = W;
+
+    this.window.addEventListener('resize', function() {
+        W = container.clientWidth || container.innerWidth;
+        H = container.clientHeight || container.innerHeight;
+        canvas.width = W;
+        canvas.height = H;
+    });
+
     // this.console.log(canvas.clientWidth, canvas.clientHeight)
     var mp = 50;
     var particles = [];
@@ -37,7 +45,7 @@ window.addEventListener('load', function () {
         ctx.clearRect(0, 0, W, H);
         for (var i = 0; i < mp; i++) {
             var p = particles[i];
-            var imgScale = p.r;
+            var imgScale = p.r * 0.8;
             ctx.drawImage(flower, 0, 0, flower.width, flower.height, p.x, p.y, flower.width * imgScale, flower.height * imgScale);
         }
         update();
